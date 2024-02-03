@@ -1,0 +1,18 @@
+User-agent: Mediapartners-Google
+Disallow:
+Allow: /*
+
+User-agent: *
+Disallow: /auth/callback
+Disallow: /rendering
+Disallow: /renders
+Disallow: /terms
+Disallow: /privacy
+Disallow: /premium/download/
+Disallow: /account
+Disallow: /account/
+Disallow: /api/
+Allow: /
+
+Sitemap: https://auto.creavite.co/sitemap.xml
+Sitemap: https://auto.creavite.co/blog/sitemap.xml
