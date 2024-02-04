@@ -1,0 +1,44 @@
+.text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.text-scrollbar-workaround {
+    width: 75%;
+    border-radius: 24px;
+}
+
+.text-container {
+    height: calc(100vh - /*header + margin*/ 107px - /*h1*/ 38px - /*footer+margin*/ 136px - 48px);
+    background-color: #313131;
+    border-radius: 8px;
+    overflow: scroll;
+    overflow-x: hidden;
+    text-align: left;
+    padding: 15px;
+}
+
+.text-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #303030;
+    box-shadow: inset 0 0 6px #303030;;
+    border-radius: 10px;
+    background-color: #292929;
+}
+
+.text-container::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+}
+
+.text-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #343434;
+}
+
+h4 {
+    margin-bottom: 6px !important;
+    margin-top: 6px !important;
+}
