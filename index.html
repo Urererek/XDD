@@ -1,11 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Turnstile &dash; Dummy Login Demo</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css" integrity="sha512-siwe/oXMhSjGCwLn+scraPOWrJxHlUgMBMZXdPe2Tnk3I0x3ESCoLz7WZ5NTH6SZrywMY+PB1cjyqJ5jAluCOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" integrity="sha512-5PV92qsds/16vyYIJo3T/As4m2d8b6oWYfoqV+vtizRB6KhF1F9kYzWzQmsO6T3z3QG2Xdhrx7FQ+5R1LiQdUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<html>
+  <head>
+    <title>Verification</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="<%= captcha_provider_script %>" async defer></script>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
 
-   <div class="cf-turnstile" data-sitekey="0x4AAAAAAAROJoccSlu-6an0" data-theme="light"></div>
-
-    
+  <body>
+    <div class="main">
+      <h1>Verification</h1>
+      <h4>
+        Please solve the <%= captcha_provider %> following below to make sure you are not a
+        robot.
+      </h4>
+      <form action="/verify/solve" method="POST" id="captcha_verification">
+        <center>
+          <div
+            class="g-recaptcha h-captcha cf-turnstile"
+            data-sitekey="<%=0x4AAAAAAAROJoccSlu-6an0%>"
+            data-callback="onPassed"
+            data-expired-callback="onExpired"></div>
+        </center>
+      </form>
+    </div>
+    <div class="footer">
+      <a href="../verify/logout">Logout</a>
+    </div>
+    <script>
+      function onPassed() {
+        document.getElementById('captcha_verification').submit();
+      }
+      function onExpired() {
+        location.reload();
+      }
+    </script>
+  </body>
+</html>
