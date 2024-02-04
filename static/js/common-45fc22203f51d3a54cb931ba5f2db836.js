@@ -1,0 +1,8 @@
+const logger={log:function(tag,message){if(message===undefined){message=tag;tag="default";}
+console.log(`%c[${tag}] %c${message}`,"color: purple; font-weight: 700","color: auto");},error:function(tag,message){if(message===undefined){message=tag;tag="default";}
+console.error(`%c[${tag}]%c ${message}`,"color: white; background-color: crimson; font-weight: 700","color: auto");}};const common={__spinContentStore__:{},setPointerEvents:function(element,state){element.css("pointer-events",state?"auto":"none");},fontAwesomeSpin:function(){return `<i class="fas fa-spinner fa-spin"></i>`;},toggleSpin:function(button,text){const id=button.attr("id");if(text===undefined){button.html(this.__spinContentStore__[id]);this.__spinContentStore__[id]=undefined;this.setPointerEvents(button,true);}else{if(this.__spinContentStore__[id]===undefined)
+this.__spinContentStore__[id]=button.html();button.html(`${this.fontAwesomeSpin()} ${text}`);this.setPointerEvents(button,false);}},discordRedirect:function(path){return "https://discord.com/api/oauth2/authorize?"
++"client_id="+window.CONFIG.CLIENT_ID
++"&redirect_uri="+encodeURIComponent(window.location.origin+path)
++"&response_type=code&scope=identify%20email%20guilds.join";},fetchParams:function(params={}){const data=new FormData();for(const field in params)
+data.append(field,params[field]);return new URLSearchParams(data);},passwordModal:function(clickHandler){ui.inputModal("Enter password","password","fa-arrow-alt-circle-right","Continue",clickHandler);},fadeOutImportant(element,duration,handler=function(){}){element.fadeOut(duration,function(){element.attr("style","display: none !important");handler();});}};
