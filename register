@@ -1,0 +1,61 @@
+<!--suppress XmlDuplicatedId -->
+<html>
+<head>
+<meta name="description" content="Novoline Utility Mod Website">
+<meta name="keywords" content="novoline, utility mod, novoline client">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" sizes="180x180" href="static/icon/apple-touch-icon-ae48d951ac79ace029bfe1b2da788d41.png">
+<link rel="icon" type="image/png" sizes="32x32" href="static/icon/favicon-32x32-c3b5c691ebb1cf8e12e98bc8f7ee7e24.png">
+<link rel="icon" type="image/png" sizes="16x16" href="static/icon/favicon-16x16-3b017cee9ffd54b60f365baf6e1649b3.png">
+<link rel="manifest" href="static/icon/site-053100cb84a50d2ae7f5492f7dd7f25e.webmanifest">
+<link rel="stylesheet" href="static/css/authentication-b47095276f1daac0fe9e7aa4c43ea8be.css">
+<link rel="stylesheet" href="static/css/shared-498fd915829119c2f4f6904e2e5904e3.css">
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/vanillatoasts@1.4.0/vanillatoasts.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="static/js/common-45fc22203f51d3a54cb931ba5f2db836.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vanillatoasts@1.4.0/vanillatoasts.min.js" crossorigin="anonymous"></script>
+<script defer src="https://kit.fontawesome.com/f8fe63fb19.js" crossorigin="anonymous"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5HEPXW3GJX"></script>
+<script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-5HEPXW3GJX');
+        </script>
+<title>Novoline Client - Register</title>
+</head>
+<script>
+        window.CONFIG = {
+            CLIENT_ID: "860999025700110379"
+        };
+    </script>
+<body class="flex-column">
+<div class="login-container flex-column">
+<img id="logo" src="static/icon/apple-touch-icon-ae48d951ac79ace029bfe1b2da788d41.png" alt="Novoline Logo" load="async">
+<hr noshade>
+<span id="title" class="h-24">Register</span>
+<form id="register-form" class="input-container flex-column" method="POST">
+<input type="email" name="email" placeholder="Email address">
+<input type="password" name="password" placeholder="Password">
+<input type="password" name="confirmPassword" placeholder="Confirm password">
+<input id="orderId" type="text" name="orderId" placeholder="Order ID / Access key">
+<input id="recaptcha-token" type="hidden" name="g-recaptcha-response">
+</form>
+<div class="g-recaptcha" data-size="invisible" data-theme="dark" data-callback="onSubmit" data-sitekey="6LdGYeQaAAAAANgX3e-dFvQieaJm-947Cb-CNjap"></div>
+<span id="register" class="button">Register</span>
+<span class="register-notice">By registering you accept the <a href="tos">Terms of Service</a> and <a href="privacy">Privacy Policy</a></span>
+</div>
+</body>
+<script>
+        var onSubmit = function(token) {
+            $("#recaptcha-token").val(token);
+            $("#register-form").submit();
+        };
+
+        $("#register").click(() => grecaptcha.execute());
+    </script>
+</html>
