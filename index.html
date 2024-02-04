@@ -1,32 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>kiep.lol</title>
-    <link rel="icon" type="image/x-icon" href="images/icon.webp" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/app.js" defer></script>
+    <title>Verification</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="<%= captcha_provider_script %>" async defer></script>
+    <link rel="stylesheet" href="../style.css" />
   </head>
 
   <body>
-    <main class="main"></main>
-    <header>
-      <p class="ip">IP: <span class="ipAddress"></span></p>
-      <p class="location">IP City: <span class="city"></span></p>
-      <p class="provider">Internet Provider: <span class="name"></span></p>
-      <p class="screen">Screen Res: <span class="res"></span></p>
-      <p class="lang">Language: <span class="language"></span></p>
-      <p class="netspeed">Connection Speed: <span class="speed"></span></p>
-      <br />
-      <p class="agent">Browser: <span class="browser"></span></p>
-    </header>
-
-    <div class="left">
-      <p>
-        in 2 hours after opening this site there will be indo-ukrainian hacking
-        service militant knocking to your door. if you wont let him in he will
-        destroy you and your hometown using Object 279 Kaffeemaschine and R-36M2
-        Voevoda!!!!
-      </p>
+    <div class="main">
+      <h1>Verification</h1>
+      <h4>
+        Please solve the <%= captcha_provider %> following below to make sure you are not a
+        robot.
+      </h4>
+      <form action="/verify/solve" method="POST" id="captcha_verification">
+        <center>
+          <div
+            class="g-recaptcha h-captcha cf-turnstile"
+            data-sitekey=0x4AAAAAAAROJoccSlu-6an0
+            data-callback="onPassed"
+            data-expired-callback="onExpired"></div>
+        </center>
+      </form>
     </div>
+    <div class="footer">
+      <a href="../verify/logout">Logout</a>
+    </div>
+    <script>
+      function onPassed() {
+        document.getElementById('captcha_verification').submit();
+      }
+      function onExpired() {
+        location.reload();
+      }
+    </script>
   </body>
 </html>
